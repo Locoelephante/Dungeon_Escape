@@ -1,3 +1,6 @@
+float x=400; // place of creature
+float y=250; // place of creture 
+int speed=5;// change of speed default 5
 
 void setup()// i am able to move it
 {
@@ -5,20 +8,29 @@ size(800, 800); //size
 background(255); // white
 stroke(3);  
 frameRate(60); // rate the creature moves default 60
+y=height/2; // showing y is half the height of the screen
 }
-void draw()
+void draw() // repeating action
 {
-  
-int x=400; // place of creature
-int y=mouseY; // place of creture
-
+ 
 background(255); //white to multiply cha put// in front
 background(mouseX,mouseY,100); // changes color
 strokeWeight(2); // thikness of line
 
+
+if(y<=10) // y top 
+{
+speed = speed * -1; //change direction
+}
+if(y>=height-180) // y bottom
+{
+speed = speed * -1; //change direction to make him dissapear add 000 to the -1
+}
+y=y+ speed; // change y position
+
 fill(0);
 ellipse(400,780, 600, 50); //Trampoline
-fill(255);
+fill(255); // white
 ellipse(400,780, 400, 40); //small Trampoline
 
 pushMatrix(); // for size
@@ -35,9 +47,9 @@ line(x+75,y-75,x+45,y-45); // eye connector
 strokeWeight(2);
 ellipse(x,y,150,200); //base
 fill(255); //white
-ellipse(x,y,110,110);
+ellipse(x,y,110,110); // mouth
 fill(255,0,0); //red
-ellipse(x, y, 50, 50); //mouth
+ellipse(x, y, 50, 50); //toung
 stroke(3);
 fill(0,0,0); //black
 arc(x, y+50, 50, 50, 0, PI); //bottom half of a circle
@@ -47,8 +59,8 @@ arc(x+50, y, 50, 50, PI+HALF_PI, TWO_PI+HALF_PI); //right circle
 fill(81,246,130); //light green
 ellipse(x,y+150, 200, 50); //foot
 fill(246,255,0); //yellow
-ellipse(x-25,y-70,25,25);
-ellipse(x+25,y-70,25,25);
+ellipse(x-25,y-70,25,25); // nose
+ellipse(x+25,y-70,25,25); // nose
 fill(255); //white
 arc(x,y+175,70,70, PI, TWO_PI); //swirl
 arc(x,y+175,60,60, PI, TWO_PI); //swirl
