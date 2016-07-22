@@ -17,7 +17,6 @@ background(255); //white to multiply cha put// in front
 background(mouseX,mouseY,100); // changes color
 strokeWeight(2); // thikness of line
 
-
 if(y<=10) // y top 
 {
 speed = speed * -1; //change direction
@@ -30,6 +29,7 @@ y=y+ speed; // change y position
 
 pushMatrix(); // for size
 scale(1); // change number for size
+
 fill(0);
 ellipse(400,780, 600, 50); //Trampoline
 fill(255); // white
@@ -83,6 +83,27 @@ line(x-100,y+50,0,100); //bottom left web
 line(x+100,y+50,800,100); //bottom right web
 line(x-100,y-50,0,50); //top left web
 line(x+100,y-50,800,50); //top right web
+if(mousePressed==true);
+{
+  if(keyCode == UP)
+  {
+    fill(255,255,0);
+  ellipse(400,400,50,50);
+  }
+}
+if(mousePressed==true);
+{
+  if (keyCode == DOWN)
+  {
+    strokeWeight(0);
+    fill(255,255,0,0);
+  ellipse(400,400,50,50);
+  }
+}
+if (y>375 ||y<425);
+{
+  text("ouch", (int)random(width),(int)random(height));
+}
 ;popMatrix(); // end of matrix
 
 
