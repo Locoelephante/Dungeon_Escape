@@ -1,23 +1,30 @@
-
+PImage red;
+PImage green;
+PImage blue;
+PImage purple;
+PImage boss;
 void setup()// i am able to move it
 {
-size(800, 800); //size
-background(255); // white
+size(1600, 900); //size
+background(0,0,0,0);
 stroke(3);  
 frameRate(60); // rate the creature moves default 60
+
 }
 void draw()
 {
+if (mouseClicked==true)
+{
   
-int x=400; // place of creature
-int y=400; // place of creture
-
-
-background(255); //white to multiply cha put// in front
+}
+ 
+}
+void cha()
+{
+int x=mouseX; // place of creature
+int y=620; // place of creture
 strokeWeight(2); // thikness of line
-
-
-
+fill(255);
 ellipse(x-100, y-100, 50, 50); //eye
 ellipse(x+100,y-100, 50, 50); //eye
 fill(0); //black
@@ -57,16 +64,151 @@ line(x-75,y,x-100,y+50); //bottom left arm
 line(x+75,y,x+100,y+50); //bottom right arm
 line(x-75,y,x-100,y-50); //top left arm
 line(x+75,y,x+100,y-50); //top right arm
-
 ellipse(x-100,y+50,20,20); //bottom left hand
 ellipse(x+100,y+50,20,20); //bottom right hand
 ellipse(x-100,y-50,20,20); //top left hand
 ellipse(x+100,y-50,20,20); //top right hand
-
-if(mousePressed==true);
+}
+void gameback()
 {
-  if (keyCode == RIGHT)
-  {
-   x=x-5;
-  }
+  background(65,240,235);
+  fill(170,97,7);
+  rect(0,600,1600,600);
+  fill(255);
+  beginShape();
+  vertex(100,100);
+  vertex(150,100);
+  vertex(150,150);
+  vertex(200,150);
+  vertex(200,100);
+  vertex(250,100);
+  vertex(250,150);
+  vertex(300,150);
+  vertex(300,250);
+  vertex(250,250);
+  vertex(250,200);
+  vertex(100,200);
+  vertex(100,100);
+  endShape();
+  
+  beginShape();
+  vertex(800,100);
+  vertex(900,100);
+  vertex(900,150);
+  vertex(950,150);
+  vertex(950,200);
+  vertex(900,200);
+  vertex(900,250);
+  vertex(750,250);
+  vertex(750,150);
+  vertex(800,150);
+  vertex(800,100);
+  endShape();
+ 
+    beginShape();
+  vertex(1300,100);
+  vertex(1450,100);
+  vertex(1450,150);
+  vertex(1450,150);
+  vertex(1450,200);
+  vertex(1400,200);
+  vertex(1400,250);
+  vertex(1300,250);
+  vertex(1300,200);
+  vertex(1250,200);
+  vertex(1250,150);
+  vertex(1300,150);
+  vertex(1300,100);
+  endShape();
+}
+void lazer()
+{
+int x=mouseX;  
+int y=620; 
+fill(39,147,10);
+beginShape();
+vertex(x+100,y+50);
+vertex(x+100,y+0);
+vertex(x+200,y+0);
+vertex(x+200,y+25);
+vertex(x+125,y+25);
+vertex(x+125,y+50);
+vertex(x+100,y+50);
+endShape();
+fill(219,35,35);
+ellipse(x+145,y+10,25,50);
+ellipse(x+165,y+10,25,50);
+ellipse(x+185,y+10,25,50);
+ellipse(x+205,y+10,25,50);
+strokeWeight(2);
+fill(39,147,10);
+rect(x+205,y+8,30,5);
+fill(0,82,193);
+ellipse(x+235,y+12,15,15);
+}
+
+void lazerbeam()
+{
+  int x=mouseX;  
+int y=620; 
+fill(0,0,236);
+  beginShape();
+  vertex(x+235,y+12);
+  vertex(x+1135,y+12);
+  vertex(x+1135,y+20);
+  vertex(x+1145,y+12);
+  vertex(x+1145,y+20);
+  vertex(x+1155,y+12);
+  vertex(x+1155,y+20);
+  vertex(x+1155,y+12);
+  vertex(x+235,y+12);
+  endShape();
+}
+
+void blue()
+{
+  blue = loadImage("blue.png");
+  image(blue, 1350,530);
+}
+
+
+void red()
+{
+  red = loadImage("red.png");
+  image(red, 1350, 530);
+}
+
+
+void green()
+{
+  green = loadImage("green.png");
+  image(green, 1200,500);
+}
+
+
+void purple()
+{
+  purple = loadImage("purple.png");
+  image(purple, 1350,530);
+}
+
+
+void boss()
+{
+  boss = loadImage("boss.png");
+  image(boss, 1350,600);
+}
+
+void mouseClicked()
+{
+ 
+  gameback();
+  red();
+  //blue();
+  //purple();
+  //green();
+  //boss();
+  cha();
+  lazer();
+  //lazerbeam(); 
 }
