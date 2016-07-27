@@ -1,8 +1,24 @@
 PImage red;
-PImage green;
+float ry = 620;
+int rSpeed = 5;
+
 PImage blue;
+float by = 620;
+int bSpeed = 7;
+
 PImage purple;
+float py = 620;
+int pSpeed = 8;
+
+PImage green;
+float gy = 620;
+int gSpeed = 10;
+
 PImage boss;
+float bossy = 620;
+int bossSpeed = 10;
+
+
 void setup()// i am able to move it
 {
 size(1600, 900); //size
@@ -11,18 +27,34 @@ stroke(3);
 frameRate(60); // rate the creature moves default 60
 
 }
+
 void draw()
 {
-if (mouseClicked==true)
-{
+  gameback();
+  //red();
+  //blue();
+  //purple();
+  //green();
+  //boss();
+  cha();
+  lazer(); 
   
-}
+  
+  if (keyPressed== true)
+  {
+  lazerbeam(); 
+  }
+  else
+  {
+    
+  }
  
+  
 }
 void cha()
 {
-int x=mouseX; // place of creature
-int y=620; // place of creture
+float x=mouseX; 
+float y=620; 
 strokeWeight(2); // thikness of line
 fill(255);
 ellipse(x-100, y-100, 50, 50); //eye
@@ -123,8 +155,8 @@ void gameback()
 }
 void lazer()
 {
-int x=mouseX;  
-int y=620; 
+float x=mouseX; 
+float y=620; 
 fill(39,147,10);
 beginShape();
 vertex(x+100,y+50);
@@ -149,9 +181,9 @@ ellipse(x+235,y+12,15,15);
 
 void lazerbeam()
 {
-  int x=mouseX;  
-int y=620; 
-fill(0,0,236);
+float x=mouseX; 
+float y=620; 
+fill((int)random(255),(int)random(255),(int)random(255));
   beginShape();
   vertex(x+235,y+12);
   vertex(x+1135,y+12);
@@ -160,55 +192,92 @@ fill(0,0,236);
   vertex(x+1145,y+20);
   vertex(x+1155,y+12);
   vertex(x+1155,y+20);
-  vertex(x+1155,y+12);
+  vertex(x+1155,y+25);
   vertex(x+235,y+12);
   endShape();
 }
 
 void blue()
 {
+ 
   blue = loadImage("blue.png");
-  image(blue, 1350,530);
-}
+  image(blue, 1350,by-90);
 
+if(by<=10) // y top 
+{
+bSpeed = bSpeed * -1; //change direction
+}
+if(by>=height-180) // y bottom
+{
+bSpeed = bSpeed * -1; //change direction to make him dissapear add 000 to the -1
+}
+by=by+ bSpeed; // change y position
+}
 
 void red()
 {
+  
   red = loadImage("red.png");
-  image(red, 1350, 530);
+  image(red, 1350, ry-90);
+  
+  if(ry<=10) // y top 
+  {
+    rSpeed = rSpeed * -1; //change direction
+  }
+  if(ry>=height-180) // y bottom
+  {
+    rSpeed = rSpeed * -1; //change direction to make him dissapear add 000 to the -1
+  }
+   ry=ry+ rSpeed; // change y position
 }
-
-
-void green()
-{
-  green = loadImage("green.png");
-  image(green, 1200,500);
-}
-
 
 void purple()
 {
+
   purple = loadImage("purple.png");
-  image(purple, 1350,530);
+  image(purple, 1350,py-90);
+  
+if(py<=10) // y top 
+  {
+    pSpeed = pSpeed * -1; //change direction
+  }
+  if(py>=height-180) // y bottom
+  {
+    pSpeed = pSpeed * -1; //change direction to make him dissapear add 000 to the -1
+  }
+   py=py+ pSpeed; // change y position
 }
 
+void green()
+{
+ 
+  green = loadImage("green.png");
+  image(green, 1200,gy-130);
+  
+if(gy<=10) // y top 
+  {
+    gSpeed = gSpeed * -1; //change direction
+  }
+  if(gy>=height-180) // y bottom
+  {
+    gSpeed = gSpeed * -1; //change direction to make him dissapear add 000 to the -1
+  }
+   gy=gy+ gSpeed; // change y position
+}
 
 void boss()
 {
-  boss = loadImage("boss.png");
-  image(boss, 1350,600);
-}
 
-void mouseClicked()
-{
- 
-  gameback();
-  red();
-  //blue();
-  //purple();
-  //green();
-  //boss();
-  cha();
-  lazer();
-  //lazerbeam(); 
+  boss = loadImage("boss.png");
+  image(boss, 1350,bossy-20);
+
+if(bossy<=10) // y top 
+  {
+    bossSpeed = bossSpeed * -1; //change direction
+  }
+  if(bossy>=height-180) // y bottom
+  {
+    bossSpeed = bossSpeed * -1; //change direction to make him dissapear add 000 to the -1
+  }
+   bossy=bossy+ bossSpeed; // change y position
 }
