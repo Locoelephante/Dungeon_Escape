@@ -1,23 +1,27 @@
+boolean lazerActive = false;
+
+float s = 0; 
+
 PImage red;
 float ry = 620;
-int rSpeed = 5;
+int rSpeed = 4;
 
 PImage blue;
 float by = 620;
-int bSpeed = 7;
+int bSpeed = 6;
 
 PImage purple;
 float py = 620;
-int pSpeed = 8;
+int pSpeed = 7;
 
 PImage green;
 float gy = 620;
-int gSpeed = 10;
+int gSpeed = 9;
 
 PImage boss;
 float bossy = 620;
 int bossSpeed = 10;
-
+int x= mouseX - 1155;
 
 void setup()// i am able to move it
 {
@@ -31,26 +35,37 @@ frameRate(60); // rate the creature moves default 60
 void draw()
 {
   gameback();
-  //red();
-  //blue();
-  //purple();
-  //green();
-  //boss();
+  time();
+  
   cha();
-  lazer(); 
+  lazer();
   
+  blue();
+  if (x>1300||x<1400 && )
+{
+  red();
+  if (x>1310||x<1390 && )
+{
+  purple();
+  if (x>1320||x<1380 && )
+{
+  green();
+  if (x>1180||x<1220 && )
+{ 
+  boss();
+ if (x>1340||x<1360 && )
+ {
+ youWin();
+}
+}
+}
+}
+}
   
-  if (keyPressed== true)
-  {
-  lazerbeam(); 
-  }
-  else
-  {
-    
-  }
  
   
-}
+
+}                             
 void cha()
 {
 float x=mouseX; 
@@ -104,6 +119,8 @@ ellipse(x+100,y-50,20,20); //top right hand
 void gameback()
 {
   background(65,240,235);
+  fill(0);
+  text("Legend Of CHA", 800,47);
   fill(170,97,7);
   rect(0,600,1600,600);
   fill(255);
@@ -202,7 +219,7 @@ void blue()
  
   blue = loadImage("blue.png");
   image(blue, 1350,by-90);
-
+ellipse(1350,by,100,100);
 if(by<=10) // y top 
 {
 bSpeed = bSpeed * -1; //change direction
@@ -219,7 +236,7 @@ void red()
   
   red = loadImage("red.png");
   image(red, 1350, ry-90);
-  
+  ellipse(1350,ry,80,80);
   if(ry<=10) // y top 
   {
     rSpeed = rSpeed * -1; //change direction
@@ -236,7 +253,7 @@ void purple()
 
   purple = loadImage("purple.png");
   image(purple, 1350,py-90);
-  
+  ellipse(1350,py,60,60);
 if(py<=10) // y top 
   {
     pSpeed = pSpeed * -1; //change direction
@@ -253,7 +270,7 @@ void green()
  
   green = loadImage("green.png");
   image(green, 1200,gy-130);
-  
+  ellipse(1200,gy,40,40);
 if(gy<=10) // y top 
   {
     gSpeed = gSpeed * -1; //change direction
@@ -270,7 +287,7 @@ void boss()
 
   boss = loadImage("boss.png");
   image(boss, 1350,bossy-20);
-
+ellipse(1350,bossy,20,20);
 if(bossy<=10) // y top 
   {
     bossSpeed = bossSpeed * -1; //change direction
@@ -280,4 +297,50 @@ if(bossy<=10) // y top
     bossSpeed = bossSpeed * -1; //change direction to make him dissapear add 000 to the -1
   }
    bossy=bossy+ bossSpeed; // change y position
+}
+
+void keyPressed()
+{
+ if(!lazerActive)
+ {
+  lazerbeam(); 
+  lazerActive = true;
+ }
+}
+
+void keyReleased()
+{
+ lazerActive = false; 
+}
+
+void time()
+{
+  s = s + .025;
+  fill(0);
+ text(s,80,47);
+ text("Time:",35,47);
+}
+
+void youWin()
+{
+  background(255);
+  fill(0);
+  text("You Win!",100,450);
+  text("You Win!",200,450);
+  text("You Win!",300,450);
+  text("You Win!",400,450);
+  text("You Win!",500,450);
+  text("You Win!",600,450);
+  text("You Win!",700,450);
+  text("You Win!",800,450);
+    text("You Win!",900,450);
+  text("You Win!",1000,450);
+  text("You Win!",1100,450);
+  text("You Win!",1200,450);
+  text("You Win!",1300,450);
+  text("You Win!",1400,450);
+  text("You Win!",1500,450);
+  text("You Win!",1600,450);
+  text("Your Time in Counting",750,525);
+  text(s,800,600);
 }
